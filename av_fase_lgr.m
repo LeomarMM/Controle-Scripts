@@ -1,6 +1,7 @@
-function [K, pc] = av_fase_lgr(Z, P, s, zc)
+function [K, pc] = av_fase_lgr(T, s, zc)
 
-Z = [Z zc];
+Z = [zero(T)' zc];
+P = pole(T)';
 %Cálculo de Contribuição de Fase
 P_ang = sum(angle(s-Z)) - sum(angle(s-P));
 pc = real(s) - imag(s)/tan(P_ang);
